@@ -19,29 +19,20 @@ const loadSpinner = () => {
 
 const editor = new Editor();
 
-getDb()
-  .then((content) => {
-    editor.setContent(content);
-  })
-  .catch((error) => {
-    console.error('Failed to retrieve content:', error);
-  })
-  .finally(() => {
+// getDb()
+//   .then((content) => {
+//     editor.setContent(content);
+//   })
+//   .catch((error) => {
+//     console.error('Failed to retrieve content:', error);
+//   })
+  // .finally(() => {
     if (typeof editor === 'undefined') {
       loadSpinner();
     }
-  });
+  // });
 
-window.addEventListener('blur', () => {
-  const content = editor.getContent();
-  putDb(content)
-    .then(() => {
-      console.log('Content stored successfully');
-    })
-    .catch((error) => {
-      console.error('Failed to store content:', error);
-    });
-});
+//  
 
 if ('serviceWorker' in navigator) {
   const workboxSW = new Workbox('/src-sw.js');
